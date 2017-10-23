@@ -12,7 +12,7 @@ require('dotenv').load();
 require('./app/config/passport')(passport);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URI);
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URI, { useMongoClient: true,});
 
 app.use(bodyParser.urlencoded())
 app.use(favicon(process.cwd() + '/public/img/favicon.ico'));
